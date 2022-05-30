@@ -15,6 +15,7 @@ const Pet = sequelize.define('pet',{
 })
 
 const Photo = sequelize.define('photo',{
+    id:{type:DataTypes.INTEGER,autoIncrement:true,primaryKey:true},
     img:{type:DataTypes.STRING}
 })
 

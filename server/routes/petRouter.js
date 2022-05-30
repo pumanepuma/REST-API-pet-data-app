@@ -1,8 +1,9 @@
 const {Router} = require('express')
 const router = new Router()
+const PetController = require('../controllers/petController')
 
-router.get('/list',(req,res) => res.json({message:'get all pets'}))
-router.get('/list/:id',(req,res) => res.json({message:`get pet with id ${req.params.id}`}))
-router.post('/create',(req,res) => res.json({message:'create new pet'}))
+router.get('/',PetController.getAll)
+router.post('/',PetController.createPet)
+router.get('/:id',PetController.getOne)
 
 module.exports = router
