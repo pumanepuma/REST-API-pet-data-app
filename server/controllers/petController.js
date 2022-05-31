@@ -17,7 +17,7 @@ class PetController{
     }
 
     async createPet(req,res){
-        let {name,age,type} = req.body
+        const {name,age,type} = req.body
         const pet = await Pet.create({name,age,type})
         if(req.files){
             const {photo} = req.files
@@ -34,6 +34,14 @@ class PetController{
         await Photo.destroy({where:{petId:id}})
         await Pet.destroy({where:{id:id}})
         return res.json({message:'ok'})
+    }
+
+    async updatePet(req,res){
+        const {id} = req.params
+        const {photo} = req.files
+        const fileName = uuid.v4() + '.jpg'
+        photo.mv(path.resolve(__dirname,'..','static',fileName))
+        const petPhoto = await Photo.create({img:fileName,petId:id})
     }
 }
 
