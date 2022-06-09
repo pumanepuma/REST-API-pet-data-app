@@ -1,3 +1,7 @@
 export const PETS_ROUTE = '/pets'
 export const LOGIN_ROUTE = '/login'
 export const REGISTER_ROUTE = '/register'
+export const CREATE_ROUTE = '/create'
+export const CATS_ROUTE = 'pets/cats'
+export const DOGS_ROUTE = 'pets/dogs'
+export const MAIN_ROUTE = '/'

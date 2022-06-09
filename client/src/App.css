@@ -1,7 +1,94 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .navbar{
-  color: white
+  background-color: #F8D629;
+  color: black;
+  height: 160px;
+}
+
+.navbar-logo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 29px;
+  color: black;
+  margin-left: 0px;
+}
+
+.navs{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#pets-list{
+  margin-left: 47px;
+}
+
+.logo{
+  width: 66px;
+  height: 67px;
+  background-color: #000000;
+  color: white;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 27px;
+}
+
+.offer{
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+  width: 562px;
+  height: 337px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offer h2{
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.offer-button{
+  background-color: black;
+  color: #FEF6F6;
+  width: 259px;
+  height: 84px;
+  border-radius: 30px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.main-page{
+  background: #F8D629;
+  color:black;
+}
+
+.main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0;
 }
