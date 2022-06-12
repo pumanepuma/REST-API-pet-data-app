@@ -13,20 +13,20 @@ const CreatePet = observer(() => {
         setFile(e.target.files[0])
     }
     const savePet = () => {
-        pets.setPets({name,age,type})
+        
     }
     return(
         <Container className='d-flex flex-column justify-content-center align-items-center'
-        style={{height: window.innerHeight - 54}}>
-            <Card style={{width:600}} className='p-5 m-auto'>
+        style={{height: window.innerHeight - 160}}>
+            <Card style={{width:600,textAlign:'left', background: 'transparent'}} className='p-5 m-auto'>
                 <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
                         <Form.Control type='text' placeholder='Enter pet name'
                         value={name} onChange={(e) => setName(e.target.value)}/>
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-3">
                         <Form.Label>Age</Form.Label>
                         <Form.Control type='number' placeholder='Enter pet age'
                         value={age} onChange={(e) => setAge(e.target.value)}/>
@@ -39,7 +39,7 @@ const CreatePet = observer(() => {
                         value='type' onClick={(e) => setType(e.target.value)}/>
                     </Form.Group>
                     <Form.Control className='mt-2' type='file' onChange={selectFile}/>
-                    <Button variant="primary" type="submit"
+                    <Button className='mt-3' variant="dark"
                     onClick={savePet}>
                         Save
                     </Button>

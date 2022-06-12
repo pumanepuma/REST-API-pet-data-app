@@ -13,18 +13,24 @@ class PetController{
         const pet = await Pet.findAll({where: {
             id:id
         }})
-        return res.json(pet)
+        const photos = await Photo.findAll({where: {
+            petId: id
+        }})
+        const resItem = {pet, photos: photos}
+        return res.json(resItem)
     }
 
     async createPet(req,res){
         const {name,age,type} = req.body
-        const pet = await Pet.create({name,age,type})
+        let pet = {}
         if(req.files){
-            const {photo} = req.files
+            const {cover} = req.files
             const fileName = uuid.v4() + '.jpg'
-            photo.mv(path.resolve(__dirname,'..','static',fileName))
+            cover.mv(path.resolve(__dirname,'..','static',fileName))
+            pet =  await Pet.create({name,age,type,cover:fileName})
             const petPhoto = await Photo.create({img:fileName,petId:pet.id})
         }
+        else pet = await Pet.create({name,age,type})
         return res.json(pet)
     }
 

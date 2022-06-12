@@ -11,7 +11,8 @@ const Pet = sequelize.define('pet',{
     id:{type:DataTypes.INTEGER,autoIncrement:true,primaryKey:true},
     name:{type:DataTypes.STRING},
     age:{type:DataTypes.INTEGER},
-    type:{type:DataTypes.STRING}
+    type:{type:DataTypes.STRING},
+    cover:{type:DataTypes.STRING}
 })
 
 const Photo = sequelize.define('photo',{

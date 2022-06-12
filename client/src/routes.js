@@ -1,5 +1,5 @@
 import Auth from './pages/Auth'
-import PetsList from './pages/PetsList'
+import PetsList from './pages/PetsPage'
 import PetPage from './pages/PetPage'
 import { PETS_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, CREATE_ROUTE, MAIN_ROUTE, CATS_ROUTE, DOGS_ROUTE } from './utils/constants'
 import CreatePet from './pages/CreatePet'
