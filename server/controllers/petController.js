@@ -4,7 +4,14 @@ const path = require('path')
 
 class PetController{
     async getAll(req,res){
-        const pets = await Pet.findAll()
+        let {type} = req.query
+        let pets = {}
+        if(!type){
+           pets = await Pet.findAll()
+        }
+        else{
+            pets = await Pet.findAll({where:{type}})
+        }
         return res.json(pets)
     }
 
@@ -36,9 +43,14 @@ class PetController{
 
     async deletePet(req,res){
         let {id} = req.params
-        await Photo.destroy({where:{petId:id}})
-        await Pet.destroy({where:{id:id}})
-        return res.json({message:'ok'})
+        try{
+            await Photo.destroy({where:{petId:id}})
+            await Pet.destroy({where:{id:id}})
+        }
+        catch(e){
+            return res.json(e.message)
+        }
+        return res.status(200)
     }
 
     async updatePet(req,res){

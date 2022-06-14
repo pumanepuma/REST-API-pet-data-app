@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite"
 import { useContext, useState } from "react"
 import { Container, Form, Card, Button } from "react-bootstrap"
 import { Context } from ".."
+import { createPet } from "../http/petsApi"
 
 const CreatePet = observer(() => {
     const [name,setName] = useState('')
@@ -13,7 +14,12 @@ const CreatePet = observer(() => {
         setFile(e.target.files[0])
     }
     const savePet = () => {
-        
+        const formData = new FormData()
+        formData.append('name',name)
+        formData.append('age',`${age}`)
+        formData.append('type',{type})
+        formData.append('cover',file)
+        createPet(formData).then(data => console.log(data))
     }
     return(
         <Container className='d-flex flex-column justify-content-center align-items-center'
@@ -39,7 +45,7 @@ const CreatePet = observer(() => {
                         value='type' onClick={(e) => setType(e.target.value)}/>
                     </Form.Group>
                     <Form.Control className='mt-2' type='file' onChange={selectFile}/>
-                    <Button className='mt-3' variant="dark"
+                    <Button className='mt-3' type='submit' variant="dark"
                     onClick={savePet}>
                         Save
                     </Button>

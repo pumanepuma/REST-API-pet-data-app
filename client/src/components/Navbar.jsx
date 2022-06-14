@@ -26,12 +26,12 @@ const NavBar = observer(() => {
             {
                 user._isAuth ?
                 <Nav className="ml-auto">
-                    <Button variant={'outline-dark'} className="mx-2" onClick={logout}>Logout</Button>
-                    <Button variant={'outline-dark'} onClick={() => navigate(CREATE_ROUTE)}>Add new Pet</Button>
+                    <Button variant='outline-dark' className="mx-2" onClick={logout}>Logout</Button>
+                    <Button variant='outline-dark' onClick={() => navigate(CREATE_ROUTE)}>Add new Pet</Button>
                 </Nav>
                 :
                 <Nav className="ml-auto">
-                    <Button variant={'outline-dark'} onClick={() => navigate(LOGIN_ROUTE)}>Login</Button>
+                    <Button variant='outline-dark' onClick={() => navigate(LOGIN_ROUTE)}>Login</Button>
                 </Nav>
             }
             </Container>

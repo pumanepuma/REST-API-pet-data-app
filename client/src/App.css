@@ -92,3 +92,24 @@
   align-items: center;
   margin-top: 0;
 }
+
+.auth-button{
+  background-color: #000000;
+}
+
+a{
+  color:black;
+}
+
+.form-bottom{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar{
+  background: transparent;
+  text-align: left;
+  cursor:pointer
+}

@@ -1,7 +1,7 @@
 import Auth from './pages/Auth'
-import PetsList from './pages/PetsPage'
+import PetsPage from './pages/PetsPage'
 import PetPage from './pages/PetPage'
-import { PETS_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, CREATE_ROUTE, MAIN_ROUTE, CATS_ROUTE, DOGS_ROUTE } from './utils/constants'
+import { PETS_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, CREATE_ROUTE, MAIN_ROUTE } from './utils/constants'
 import CreatePet from './pages/CreatePet'
 import Main from './pages/Main'
 
@@ -31,14 +31,6 @@ export const publicRoutes = [
     },
     {
         path: PETS_ROUTE,
-        element: <PetsList />
-    },
-    {
-        path: CATS_ROUTE,
-        element: <PetsList />
-    },
-    {
-        path: DOGS_ROUTE,
-        element: <PetsList />
+        element: <PetsPage />
     }
 ]

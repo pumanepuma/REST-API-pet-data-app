@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Container, Form, Button, Row, Card } from "react-bootstrap"
+import { Container, Form, Button, Card } from "react-bootstrap"
 import { Context } from ".."
 import {observer} from 'mobx-react-lite'
 import { LOGIN_ROUTE, PETS_ROUTE, REGISTER_ROUTE } from "../utils/constants"
@@ -35,26 +35,34 @@ const Auth = observer(() => {
         <Container className='d-flex flex-column justify-content-center align-items-center'
         style={{height: window.innerHeight - 160}}>
             <Card style={{width:600}} className='p-5 m-auto'>
-                <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email"
-                        value={email} onChange={(e) => setEmail(e.target.value)} />
+                <h2 className='text-center'>{signed ? 'Login' : 'Registration'}</h2>
+                <Form className='d-flex flex-column' style={{textAlign:'left'}}>
+                    <Form.Group className='mb-3'>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control 
+                        placeholder='email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}/>
                     </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    
+                    <Form.Group className='mb-3'>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" 
-                        value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <Form.Control 
+                        className='mt-2'
+                        placeholder='password'
+                        type='password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}/>
                     </Form.Group>
-                    <Button variant="primary" onClick={click}>
-                        {signed ? 'Login' : 'Register'}
-                    </Button>
+                    
+                    <div className='form-bottom'>
+                        {signed ? <span className='mt-2'>No account yet? <a href={REGISTER_ROUTE}>Signup</a></span> 
+                        : <span className='mt-2'>Have an account? <a href={LOGIN_ROUTE}>Login</a></span>}
+                        <Button className='mt-2' variant="dark" onClick={click}>
+                            {signed ? 'Login' : 'Signup'}
+                        </Button>
+                    </div>
                 </Form>
-                <Row>
-                    {signed ? <p>Don't have an account yet? <a href={REGISTER_ROUTE}>Register</a></p>
-                    : <p>Already have an account? <a href={LOGIN_ROUTE}>Login</a></p>}
-                </Row>
             </Card>
         </Container>
     )
