@@ -5,6 +5,11 @@ export const getPets = async() => {
     return data
 }
 
+export const getFilteredPets = async(filter) => {
+    const {data} = await $host.get('/api/pets?type=' + filter)
+    return data
+}
+
 export const createPet = async(pet) => {
     const {data} = await $authHost.post('/api/pets',pet)
     return data

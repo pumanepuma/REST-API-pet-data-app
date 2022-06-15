@@ -12,7 +12,7 @@ const PetPage = observer(() => {
     const {user} = useContext(Context)
     const navigate = useNavigate()
     useEffect(() => {
-        getOnePet(id).then(data => setPet(data.pet[0]))
+        getOnePet(id).then(data => setPet(data.pet[0])).then(() => console.log(pet.type))
     },[])
     const onDelete = () => {
         deletePet(id)

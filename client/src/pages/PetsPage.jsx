@@ -1,17 +1,18 @@
 import { observer } from "mobx-react-lite"
 import { useContext, useEffect } from "react"
-import { Container, Row, Col, ListGroup } from "react-bootstrap"
+import { Container, Row, Col} from "react-bootstrap"
 import { Context } from ".."
 import Pet from "../components/Pet"
-import { getPets } from "../http/petsApi"
-import { Image } from 'react-bootstrap'
+import { getFilteredPets, getPets } from "../http/petsApi"
 import { SideBar } from "../components/SideBar"
 
 const PetsList = observer(() => {
     const {pets} = useContext(Context)
     useEffect(() => {
-        getPets().then(data => pets.setPets(data))
-    },[])
+        console.log('filter has changed')
+        if(!pets._selectedType) getPets().then(data => pets.setPets(data))
+        else getFilteredPets(pets._selectedType).then(data => pets.setPets(data))
+    },[pets._selectedType,pets._pets])
     
     return (
         <Container style={{height:window.innerHeight - 160}}>

@@ -12,6 +12,7 @@ const Pet = ({pet}) => {
                 <Image width={150} height={150} src={process.env.REACT_APP_API_URL + pet.cover}/>
                 <p>{pet.name}</p>
                 <p>{pet.age} years old</p>
+                <p>{pet.type}</p>
             </Card>
         </Col>
     )

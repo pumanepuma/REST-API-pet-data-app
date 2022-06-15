@@ -6,25 +6,36 @@ class PetController{
     async getAll(req,res){
         let {type} = req.query
         let pets = {}
-        if(!type){
-           pets = await Pet.findAll()
+        try{
+            if(!type){
+                pets = await Pet.findAll()
+            }
+            else{
+                pets = await Pet.findAll({where:{type}})
+            }
+            
+            return res.json(pets)
         }
-        else{
-            pets = await Pet.findAll({where:{type}})
+        catch(e){
+            return res.json(e.message)
         }
-        return res.json(pets)
     }
 
     async getOne(req,res){
         let {id} = req.params
-        const pet = await Pet.findAll({where: {
-            id:id
-        }})
-        const photos = await Photo.findAll({where: {
-            petId: id
-        }})
-        const resItem = {pet, photos: photos}
-        return res.json(resItem)
+        try{
+            const pet = await Pet.findAll({where: {
+                id:id
+            }})
+            const photos = await Photo.findAll({where: {
+                petId: id
+            }})
+            const resItem = {pet, photos: photos}
+            return res.json(resItem)
+        }
+        catch(e){
+            return res.json(e.message)
+        }
     }
 
     async createPet(req,res){

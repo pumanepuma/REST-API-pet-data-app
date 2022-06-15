@@ -17,10 +17,10 @@ const NavBar = observer(() => {
         <Navbar >
             <Container className='navbar'>
             <div className='navs'>
-            <NavLink href='/' className='navbar-logo'>
-                <div className='logo'>HP</div>
-                <span id='logo-text'>Happy Pet</span>
-            </NavLink>
+                <NavLink href='/' className='navbar-logo'>
+                    <div className='logo'>HP</div>
+                    <span id='logo-text'>Happy Pet</span>
+                </NavLink>
                 <NavLink  id='pets-list' style={{color:'black'}} onClick={() => navigate(PETS_ROUTE)}>Pets List</NavLink>
             </div>
             {
