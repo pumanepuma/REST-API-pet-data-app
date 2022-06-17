@@ -66,10 +66,13 @@ class PetController{
 
     async updatePet(req,res){
         const {id} = req.params
-        const {photo} = req.files
-        const fileName = uuid.v4() + '.jpg'
-        photo.mv(path.resolve(__dirname,'..','static',fileName))
-        const petPhoto = await Photo.create({img:fileName,petId:id})
+        if(req.files){
+            const {photo} = req.files
+            const fileName = uuid.v4() + '.jpg'
+            photo.mv(path.resolve(__dirname,'..','static',fileName))
+            const petPhoto = await Photo.create({img:fileName,petId:id})
+            return res.json(petPhoto)
+        }
         const pet = await Pet.findOne({where:{id:id}})
         return res.json(pet)
     }

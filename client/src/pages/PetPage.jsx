@@ -5,14 +5,17 @@ import {Context} from '..'
 import {observer} from 'mobx-react-lite'
 import { deletePet, getOnePet } from "../http/petsApi"
 import { PETS_ROUTE } from "../utils/constants"
+import UpdatePet from "../components/UpdatePet"
 
 const PetPage = observer(() => {
     const [pet,setPet] = useState({})
+    const [showUpdate,setShowUpdate] = useState(false)
     let {id} = useParams()
     const {user} = useContext(Context)
     const navigate = useNavigate()
+
     useEffect(() => {
-        getOnePet(id).then(data => setPet(data.pet[0])).then(() => console.log(pet.type))
+        getOnePet(id).then(data => setPet(data.pet[0]))
     },[])
     const onDelete = () => {
         deletePet(id)
@@ -28,8 +31,9 @@ const PetPage = observer(() => {
                     <p>{pet.age} years old</p>
                 </div>
                 {user._isAuth && <Row className='d-flex flex-row justify-content-between'>
-                    <Button variant='primary'>Add photos</Button>
+                    <Button variant='primary' onClick={() => {setShowUpdate(true)}}>Add photos</Button>
                     <Button variant='danger' onClick={onDelete}>Delete</Button>
+                    <UpdatePet show={showUpdate} onHide={() => setShowUpdate(false)} />
                 </Row>}
             </Card>
         </Container>

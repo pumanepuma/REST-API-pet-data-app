@@ -12,7 +12,11 @@ const PetsList = observer(() => {
         console.log('filter has changed')
         if(!pets._selectedType) getPets().then(data => pets.setPets(data))
         else getFilteredPets(pets._selectedType).then(data => pets.setPets(data))
-    },[pets._selectedType,pets._pets])
+    },[pets._selectedType])
+    
+    useEffect(() => {
+        getPets().then(data => pets.setPets(data))
+    },[])
     
     return (
         <Container style={{height:window.innerHeight - 160}}>

@@ -24,3 +24,8 @@ export const deletePet = async(id) => {
     await $authHost.delete('/api/pets/' + id)
     return {message:'ok'}
 }
+
+export const updatePet = async(id,photo) => {
+    const {data} = await $authHost.put('/api/pets/' + id, photo)
+    return data
+}
