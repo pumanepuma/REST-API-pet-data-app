@@ -30,7 +30,9 @@ class PetController{
             const photos = await Photo.findAll({where: {
                 petId: id
             }})
-            const resItem = {pet, photos: photos}
+            const resItem = {pet: pet, photos: photos}
+            console.log(photos)
+            console.log(pet)
             return res.json(resItem)
         }
         catch(e){

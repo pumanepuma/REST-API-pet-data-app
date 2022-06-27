@@ -8,7 +8,7 @@ export const SideBar = observer(() => {
     const selectType = (type) => {
         pets.setSelectedType(type)
     }
-    const types = [{name:'Cat',id:1,value:'cat'},{name:'Dog',id:2,value:'dog'},{name:'All pets',id:3,value:undefined}]
+    const types = [{name:'Cats',id:1,value:'cat'},{name:'Dogs',id:2,value:'dog'},{name:'All pets',id:3,value:undefined}]
 
     return (
         <ListGroup className='sidebar'>
@@ -16,8 +16,7 @@ export const SideBar = observer(() => {
                 return <ListGroup.Item
                 onClick={() => selectType(type.value)}
                 key={type.id}
-                id={type.id}
-                style={{background:'transparent'}}>
+                id={type.id}>
                     {type.name}
                 </ListGroup.Item>
             })}
